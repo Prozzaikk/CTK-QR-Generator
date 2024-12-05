@@ -1,9 +1,7 @@
-#from lib2to3.patcomp import tokenize_wrapper
-
 import customtkinter as CTk
 from make_qr import make_qr
-# from qr_frame import QR_Frame
 from PIL import Image
+
 
 class App(CTk.CTk):
     def __init__(self):
