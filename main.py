@@ -19,16 +19,16 @@ class App(CTk.CTk):
 
         #QR Frame
         self.qr_image_url = ".\\qr_icon.png"
-        self.qr_image = CTk.CTkImage(dark_image=Image.open(self.qr_image_url), size=(230, 230))
+        self.qr_image = CTk.CTkImage(dark_image=Image.open(self.qr_image_url), size=(200, 200))
         self.qr_image_label = CTk.CTkLabel(master=self, text="", image=self.qr_image)
-        self.qr_image_label.grid(row=0, columnspan=2)
+        self.qr_image_label.grid(row=0, columnspan=2, pady=10)
 
 
         #Entry data for encoding
         self.enter_data_label = CTk.CTkLabel(master=self, text="Enter data for encoding or\n"
                                                                "Enter the sequence from\n"
                                                                "start to end with -")
-        self.enter_data_label.grid(row=1, column=0, padx=10, pady=10, sticky="nsew")
+        self.enter_data_label.grid(row=1, column=0, padx=10, pady=15, sticky="nsew")
         self.entry_data = CTk.CTkEntry(master=self, width=170)
         self.entry_data.grid(row=1, column=1, sticky="w")
 
@@ -90,9 +90,9 @@ class App(CTk.CTk):
                                    path_to_save=self.entry_path.get(), qr_type=self.extention_type_option_menu_var)
         if self.is_show_true:
             self.qr_image_url = new_qr_image_url
-            self.qr_image = CTk.CTkImage(dark_image=Image.open(self.qr_image_url), size=(230, 230))
+            self.qr_image = CTk.CTkImage(dark_image=Image.open(self.qr_image_url), size=(200, 200))
             self.qr_image_label = CTk.CTkLabel(master=self, text="", image=self.qr_image)
-            self.qr_image_label.grid(row=0, columnspan=2)
+            self.qr_image_label.grid(row=0, columnspan=2, pady=10)
 
 
     def extention_type_option_menu_callback(self, choice):
