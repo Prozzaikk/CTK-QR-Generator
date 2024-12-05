@@ -1,4 +1,4 @@
-from lib2to3.patcomp import tokenize_wrapper
+#from lib2to3.patcomp import tokenize_wrapper
 
 import customtkinter as CTk
 from make_qr import make_qr
@@ -80,11 +80,14 @@ class App(CTk.CTk):
                                        text_color="#494d57")
         self.develop_by.grid(row=7, columnspan=2)
 
+
+    #Method for showing generated qr code
     def switch_is_show(self):
         self.is_show_true = int(self.switch_show_var.get())
         return self.is_show_true
 
 
+    #method for generating qr code and updating the logo or for displaying the generated qr code
     def generate_qr_btn(self):
         new_qr_image_url = make_qr(data_to_qr=self.entry_data.get(), filename=self.entry_filename.get(),
                                    path_to_save=self.entry_path.get(), qr_type=self.extention_type_option_menu_var)
