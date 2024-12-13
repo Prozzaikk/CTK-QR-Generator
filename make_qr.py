@@ -5,8 +5,8 @@ from os_path_checker import path_checker
 def make_qr(data_to_qr, filename, path_to_save, qr_type=".png"):
     os_path_to_save = path_checker(path_to_save)
     #logo display return
-    if len(data_to_qr) == 0 or len(filename) < 1 or len(path_to_save) < 1:
-        return ".\\qr_icon.png"
+    if len(data_to_qr) == 0 or len(filename) == 0 or len(path_to_save) == 0 or data_to_qr is None or filename is None or path_to_save is None:
+        return ".\\input_data_error.png"
     else:
         #sequence creation
         if "-" in data_to_qr:
@@ -19,7 +19,7 @@ def make_qr(data_to_qr, filename, path_to_save, qr_type=".png"):
 
             #Sequence generation
             for i in range(int(data_seq[0]), int(data_seq[1]) + 1):
-                qr_url = os_path_to_save + str(i) + qr_type
+                qr_url = os_path_to_save + filename + str(i) + qr_type
                 qrcode = segno.make_qr(data_to_qr)
                 qrcode.save(qr_url, border=2, scale=5)
 

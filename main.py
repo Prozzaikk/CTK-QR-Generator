@@ -1,5 +1,6 @@
 import customtkinter as CTk
 from make_qr import make_qr
+import PIL
 from PIL import Image
 
 
@@ -20,6 +21,13 @@ class App(CTk.CTk):
         self.qr_image = CTk.CTkImage(dark_image=Image.open(self.qr_image_url), size=(200, 200))
         self.qr_image_label = CTk.CTkLabel(master=self, text="", image=self.qr_image)
         self.qr_image_label.grid(row=0, columnspan=2, pady=10)
+
+        self.reload_icon_url = ".\\reload.png"
+        self.reload_icon = CTk.CTkImage(dark_image=Image.open(self.reload_icon_url), size=(20, 20))
+        self.reload_logo_button = CTk.CTkButton(master=self, text="", width=30, height=30,
+                                                command=self.reload_logo_button_func, image=self.reload_icon,
+                                                fg_color="#636d83", hover_color="#528bff")
+        self.reload_logo_button.grid(row=0, column=1, sticky="n", padx=[70, 0], pady=[10, 0])
 
 
         #Entry data for encoding
@@ -78,6 +86,14 @@ class App(CTk.CTk):
                                        text_color="#494d57")
         self.develop_by.grid(row=7, columnspan=2)
 
+        self.error_image_arr = [".\\input_data_error.png", "./input_data_error.png", ".\\sequence_input_error.png",
+                                "./sequence_input_error.png"]
+
+    def reload_logo_button_func(self):
+        self.qr_image_url = "qr_icon.png"
+        self.qr_image = CTk.CTkImage(dark_image=Image.open(self.qr_image_url), size=(200, 200))
+        self.qr_image_label = CTk.CTkLabel(master=self, text="", image=self.qr_image)
+        self.qr_image_label.grid(row=0, columnspan=2, pady=10)
 
     #Method for showing generated qr code
     def switch_is_show(self):
@@ -89,7 +105,7 @@ class App(CTk.CTk):
     def generate_qr_btn(self):
         new_qr_image_url = make_qr(data_to_qr=self.entry_data.get(), filename=self.entry_filename.get(),
                                    path_to_save=self.entry_path.get(), qr_type=self.extention_type_option_menu_var)
-        if self.is_show_true:
+        if self.is_show_true or new_qr_image_url in self.error_image_arr:
             self.qr_image_url = new_qr_image_url
             self.qr_image = CTk.CTkImage(dark_image=Image.open(self.qr_image_url), size=(200, 200))
             self.qr_image_label = CTk.CTkLabel(master=self, text="", image=self.qr_image)
