@@ -1,6 +1,5 @@
 import customtkinter as CTk
 from make_qr import make_qr
-import PIL
 from PIL import Image
 import qr_frame
 
