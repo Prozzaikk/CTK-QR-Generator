@@ -12,7 +12,7 @@ class App(CTk.CTk):
 
 
         #Window configuration
-        self.geometry("645x590")
+        self.geometry("635x590")
         self.resizable(False, False)
         self.title("CTk QR Generator")
         #self.iconbitmap("qr_icon.ico")
@@ -32,7 +32,7 @@ class App(CTk.CTk):
         self.reload_logo_button = CTk.CTkButton(master=self, text="", width=30, height=30,
                                                 command=self.reload_logo_button_func, image=self.reload_icon,
                                                 fg_color="#43454a", hover_color="#528bff")
-        self.reload_logo_button.grid(row=0, column=2, sticky="nw", padx=[50, 0], pady=[10, 0])
+        self.reload_logo_button.grid(row=0, column=2, sticky="nw", padx=[60, 0], pady=[10, 0])
 
 
         #Entry data for encoding
@@ -59,7 +59,7 @@ class App(CTk.CTk):
                                                                                       "yellow", "green", "blue",
                                                                                       "dark blue", "purple"],
                                                                  command=self.foreground_qr_color_option_menu_callback,
-                                                                 width=40,
+                                                                 width=80,
                                                                  fg_color="#528bff", button_color="#3373f5",
                                                                  button_hover_color="#636d83")
         self.foreground_qr_color_option_menu.grid(row=2, column=3, sticky="w")
@@ -80,7 +80,7 @@ class App(CTk.CTk):
                                                                                       "yellow", "green", "blue",
                                                                                       "dark blue", "purple"],
                                                                  command=self.background_qr_color_option_menu_callback,
-                                                                 width=40,
+                                                                 width=80,
                                                                  fg_color="#528bff", button_color="#3373f5",
                                                                  button_hover_color="#636d83")
         self.background_qr_color_option_menu.grid(row=3, column=3, sticky="w")
