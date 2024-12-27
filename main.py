@@ -12,10 +12,13 @@ class App(CTk.CTk):
 
 
         #Window configuration
-        self.geometry("645x580")
+        self.geometry("645x590")
         self.resizable(False, False)
         self.title("CTk QR Generator")
-        self.iconbitmap("qr_icon.ico")
+        #self.iconbitmap("qr_icon.ico")
+        # self.wm_iconbitmap()
+        # icopath = ImageTk.PhotoImage(file="qr_icon.ico")
+        # self.iconphoto(False, icopath)
 
 
         #QR Frame
@@ -24,7 +27,7 @@ class App(CTk.CTk):
 
 
         #Reload button
-        self.reload_icon_url = ".\\reload.png"
+        self.reload_icon_url = "reload.png"
         self.reload_icon = CTk.CTkImage(dark_image=Image.open(self.reload_icon_url), size=(20, 20))
         self.reload_logo_button = CTk.CTkButton(master=self, text="", width=30, height=30,
                                                 command=self.reload_logo_button_func, image=self.reload_icon,
@@ -120,7 +123,7 @@ class App(CTk.CTk):
                                 "./sequence_input_error.png"]
 
     def reload_logo_button_func(self):
-        self.qr_frame.show_generated_qr(new_qr_image_url=".\\qr_icon.png")
+        self.qr_frame.show_generated_qr(new_qr_image_url="qr_icon.png")
 
 
     #Method for showing generated qr code
